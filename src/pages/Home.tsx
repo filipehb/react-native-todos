@@ -17,7 +17,7 @@ export function Home() {
 
     tasks.find(task => task.title === newTaskTitle)
       ? Alert.alert('Task já cadastrada', "Você não pode cadastrar uma task com o mesmo nome")
-      : setTasks(oldTasks => [...oldTasks, data]);    
+      : setTasks(oldTasks => [...oldTasks, data]);
   }
 
   function handleToggleTaskDone(id: number) {
@@ -29,9 +29,20 @@ export function Home() {
   }
 
   function handleRemoveTask(id: number) {
-    setTasks(oldTasks => oldTasks.filter(
-      task => task.id !== id
-    ));
+    Alert.alert(
+      "Remover item",
+      "Tem certeza que você deseja remover esse item?",
+      [
+        {
+          text: "Não"
+        },
+        {
+          text: "Sim", onPress: () => setTasks(oldTasks => oldTasks.filter(
+            task => task.id !== id
+          ))
+        }
+      ]
+    );
   }
 
   return (
