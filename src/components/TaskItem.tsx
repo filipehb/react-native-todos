@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import Icon from 'react-native-vector-icons/Feather';
 
 import trashIcon from '../assets/icons/trash/trash.png'
@@ -13,7 +13,6 @@ interface TasksItemProps {
     removeTask: (id: number) => void;
     editTask: (taskId: number, taskNewTitle: string) => void;
 }
-
 
 export function TaskItem({ removeTask, toggleTaskDone, editTask, index, item }: TasksItemProps) {
     const [isEditing, setEditing] = useState(false);
@@ -148,8 +147,18 @@ const styles = StyleSheet.create({
         fontFamily: 'Inter-Medium'
     },
     iconsContainer: {
+        flexDirection: 'row',
+        alignItems: "flex-end"
     },
     iconsDivider: {
+        height: 24,
+        width: 1,
+        backgroundColor: '#C4C4C4',
+        marginLeft: 12,
+        marginRight: 12,
+        opacity: 0.24,
+        alignItems: 'center',
+        borderWidth: 1
     }
 })
 
