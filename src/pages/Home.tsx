@@ -8,6 +8,14 @@ import { TodoInput } from '../components/TodoInput';
 export function Home() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
+  function handleEditTask(taskId:number, taskNewTitle:string) {
+    setTasks(oldTasks =>
+      oldTasks.map(task =>
+        task.id === taskId ? { ...task, title: taskNewTitle } : task,
+      ),
+    );
+  }
+
   function handleAddTask(newTaskTitle: string) {
     const data = {
       id: new Date().getTime(),
@@ -55,6 +63,7 @@ export function Home() {
         tasks={tasks}
         toggleTaskDone={handleToggleTaskDone}
         removeTask={handleRemoveTask}
+        editTask={handleEditTask}
       />
     </View>
   )
